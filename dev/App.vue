@@ -15,6 +15,8 @@
       @on-per-page-change="onPerPageChange"
       @on-search="onSearch"
       @on-selected-rows-change="onSelectChanged"
+      @on-data-changed="InlineEdit"
+      @on-send-data-to-server="sendDataToServer"
       :columns="columns"
       :rows="rows"
       theme="black-rhino"
@@ -48,6 +50,7 @@
 <script>
 import GroupedTable from './grouped-table';
 import RemoteTable from './remote-table';
+import InlineEdit from './../src/components/utils/InlineEdit'
 
 export default {
   name: 'test',
@@ -184,6 +187,10 @@ export default {
     };
   },
   methods: {
+    sendDataToServer(row, field, newData) {
+      console.log(row, field,newData)
+    },
+    InlineEdit,
     funcValue(row) {
       return row.age + 5;
     },
